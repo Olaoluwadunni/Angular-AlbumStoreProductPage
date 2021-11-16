@@ -10,6 +10,15 @@ import {ProductTracklistingComponent} from './product-tracklisting/product-track
 
 import { ProductService } from './product.service';
 
+import {Router, RouterModule, Routes} from '@angular/router';
+import { ProductListComponent } from './product-list/product-list.component';
+
+const appRoutes: Routes = [
+{path: 'products', component: ProductListComponent},
+{path: 'product/:id', component: ProductPageComponent},
+{path: '', redirectTo: 'products', pathMatch: 'full'}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +29,8 @@ import { ProductService } from './product.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
